@@ -2,6 +2,9 @@ package com.haisun.simple.thread;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 可重入
+ */
 public class T2 {
 
     private synchronized void m1 (){
