@@ -1,7 +1,5 @@
 package com.haisun.simple.thread;
 
-import java.util.concurrent.locks.LockSupport;
-
 public class A1B2C3Thread {
 
     public static void main(String[] args) {
@@ -15,7 +13,7 @@ public class A1B2C3Thread {
             public void run() {
                 synchronized (o) {
                     for (int num: nums) {
-                        System.out.println(num);
+                        System.out.print(num);
                         try {
                             o.notify();
                             o.wait();
@@ -23,9 +21,8 @@ public class A1B2C3Thread {
                             e.printStackTrace();
                         }
                     }
+                    o.notify();
                 }
-
-                //o.notify();
             }
         },"t1").start();
 
@@ -33,7 +30,7 @@ public class A1B2C3Thread {
         new Thread(()->{
             synchronized (o) {
                 for (String str: strs) {
-                    System.out.println(str);
+                    System.out.print(str);
                     try {
                         o.notify();
                         o.wait();
